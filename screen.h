@@ -1,21 +1,4 @@
-#define UNICODE
-enum COLORS{BLACK=30, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE};
-#define bg(c) (c+10)
-#define COL 80
-#define BAR "\u2590"
-
-void clearScreen(void);
-void setColors(short, short);
-void resetColors(void);
-void barChart(int []);
-int peakcount(int []);#define UNICODE
-enum COLORS{BLACK=30, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE};
-#define bg(c) (c+10)
-#define COL 80
-#define BAR "\u2590"
-
-void clearScreen(void);
-void setColors(short, short);
-void resetColors(void);
-void barChart(int []);
-int peakcount(int []);
+#include <stdio.h>
+#include <stdlib.h>
+enum LETTERS{LA=0, LB, LC, LD, LE, LF, LG, LH, LI, LJ, LK, LL, LM, LN, LO, LP, LQ, LR, LS, LT, LU, LV, LW, LX, LY, LZ};
+char fileintoarray(int i);
