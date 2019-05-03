@@ -52,8 +52,8 @@ char fileintoarray(int i){
 		if((words[c]==' ') &&(words[c+1]>64)&&(words[c+1]<91))
 			wc++;
 	}
-	printf("\033[62;1H");
-//	printf("Number of words: %d\n", wc);
+	printf("\033[1;1H");
+	printf("Number of words: %d\n", wc);
 
 	for(c=0;c<1311;c++){
 		if(words[c]=='A')

@@ -1,0 +1,34 @@
+# appdev cource ver 1 extra project
+
+This application offers a possibility to count down amount of letters in a text (provided one in particular) and 
+	also count amount of words starting with each letter.
+The application displays amount of words and two bar charts, the first one(cyan color) shows counted starting lettes 
+and the second one shows all letters from the text.
+
+List of Content
+	1. Configuration Instructions
+		Required:
+			-Linux operating system
+			-Internet Connection
+	2. Installation Instructions
+		1) Connect your computer to Internet
+		2) Use command "git clone www.github.com/Boosh74/appdev_x" to upload the code from the link to your computer: https://github.com/Boosh74/appdev_x
+		3) Use "make" command to compile program and build the project;
+			3.1)If you want to decompile the program, use "make clean" command; 
+
+	3. Operating Instructions;
+		3.1. If youwant to see the bar chart representation of mentioned information on letters, use command "./screen.out";
+			3.1.1 The screen will remain until you press any key;
+	4. List of Files:
+		4.1.  README
+		4.2.  main.c
+		4.3.  makefile
+		4.4.  screen.c
+		4.5.  screen.h
+	5. Copyright / Copyleft
+		Copyleft Freedom 3;
+	6. Contact Info.
+		Email to daniil_bush_2018@mail.ru;
+	7. Credits and Acknowledgement
+		Author: Daniil Bushuev;
+		This project is an extra task provided by principal lecturer Gao Chao for the "Application Development" cource at VAMK.
