@@ -1,6 +1,38 @@
 #include <stdio.h>
 #include "screen.h"
 #include <stdlib.h>
+
+void barChart(int db[], int tab, int scale){
+	int i, j;
+	for(i=0;i<COL;i++){
+		for(j=1;j<=(db[i]/scale);j++){
+			printf("\033[%d;%dH", 35-j, i*2+1+tab);
+
+#ifdef UNICODE
+			printf("%s", BAR);
+#else
+			printf("%c", '*');
+#endif
+
+			printf("\033[%d;%dH", 35-j, (i+1)*2+tab);
+#ifdef UNICODE
+			printf("%s", BAR);
+#else
+			printf("%c", '*');
+#endif
+		}
+		printf("\33[35;%dH", (i+1)*2+tab);
+		printf("%c", 65+i);
+		if(db[i]!=0){
+			printf("\33[%d;%dH", 35-j ,i*2+1+tab);
+			printf("%d", db[i]);
+		}
+	}
+	fflush(stdout);
+}
+
+
+
 char fileintoarray(int i){
 	FILE* file;
 	int ls[26]={0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -20,7 +52,8 @@ char fileintoarray(int i){
 		if((words[c]==' ') &&(words[c+1]>64)&&(words[c+1]<91))
 			wc++;
 	}
-	printf("Number of words: %d\n", wc);
+	printf("\033[62;1H");
+//	printf("Number of words: %d\n", wc);
 
 	for(c=0;c<1311;c++){
 		if(words[c]=='A')
@@ -133,11 +166,34 @@ char fileintoarray(int i){
 				lfs[25]++;
 		}
 	}
-/*	for(int j=0; j<26; j++)
-		printf("Num:\n%d\n", ls[j]);
+/*
+	for(int j=0; j<26; j++)
+		printf("Num: %d", ls[j]);
 
 	for(int j=0; j<26; j++)
-		printf("Num: %d ", lfs[j]);
+		printf("Num:\n%d\n", lfs[j]);
 */
 //	return words[i];
+
+	setColors(CYAN, bg(BLACK));
+	barChart(lfs, 0, 2);
+	setColors(GREEN, bg(BLACK));
+	barChart(ls, 62, 5);
+
 }
+
+void clearScreen(void){
+	printf("\033[2J");
+	fflush(stdout);
+}
+
+void setColors(short bg, short fg){
+	printf("\033[%d;%d;1m", bg, fg);
+	fflush(stdout);
+}
+
+void resetColors(void){
+	printf("\033[0m");
+	fflush(stdout);
+}
+
